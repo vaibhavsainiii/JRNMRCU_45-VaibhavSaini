@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerServiceTest" project="FKart.com" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.fkart.testing.CustomerServiceTest" time="0.117" displayname="CustomerServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.fkart.testing.CustomerServiceTest]">
+    <testcase name="viewTest1" classname="com.fkart.testing.CustomerServiceTest" time="0.092" displayname="viewTest1()" uniqueid="[engine:junit-jupiter]/[class:com.fkart.testing.CustomerServiceTest]/[method:viewTest1()]"/>
+    <testcase name="addTest" classname="com.fkart.testing.CustomerServiceTest" time="0.006" displayname="addTest()" uniqueid="[engine:junit-jupiter]/[class:com.fkart.testing.CustomerServiceTest]/[method:addTest()]"/>
+    <testcase name="viewTest" classname="com.fkart.testing.CustomerServiceTest" time="0.019" displayname="viewTest()" uniqueid="[engine:junit-jupiter]/[class:com.fkart.testing.CustomerServiceTest]/[method:viewTest()]"/>
+  </testsuite>
+</testrun>

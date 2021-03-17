@@ -1,0 +1,112 @@
+package com.EKart.controller;
+
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+import com.ekart.model.Admin;
+import com.ekart.model.Product;
+import com.ekart.service.AdminOperationsProduct;
+import com.ekart.service.AdminOperationsProductImpl;
+import com.ekart.util.InputUtil;
+
+public class AdminController {
+	private static AdminOperationsProduct productService = new AdminOperationsProductImpl();
+
+	public void operations() {
+		Scanner scanner = InputUtil.getScanner();
+		boolean status = true;
+		int id;
+		Admin admin = new Admin();
+		System.out.println("Please enter the ID and Password: ");
+		String userName = scanner.next();
+		String pass = scanner.next();
+		if (((admin.getUserName()).equals(userName)) && (admin.getPassword()).compareTo(pass) == 0) {
+			System.out.println("ID and password matched....");
+			while (status) {
+				System.out.println("-----Welcome to Admin Operations-----");
+				System.out.println(
+						" 1. Enter product \n 2. Update product \n 3. Remove product \n 4. view Product \n 5. All Products \n 6. Exit");
+
+				System.out.println("enter your choice:");
+				int choice = scanner.nextInt();
+
+				switch (choice) {
+
+				case 1:
+					Product product = readProductInfo();
+					if (productService.add(product)) {
+						System.out.println("Product with product ID: " + product.getId() + " added successfully!");
+					} else {
+						System.out.println("Product not added.!");
+					}
+					break;
+
+				case 2:
+					System.out.println("Enter Product id: ");
+					id = scanner.nextInt();
+					if (productService.update(id) == true)
+						{
+						System.out.println("Product is sucessfully updated: ");
+						}
+					else
+						System.out.println("Product does not exist");
+					break;
+
+				case 3:
+					System.out.println("Enter employee id: ");
+					id = scanner.nextInt();
+					if (productService.delete(id) == true)
+						System.out.println("Product is sucessfully deleted: ");
+					else
+						System.out.println("Product does not exist");
+					break;
+
+				case 4:
+					System.out.println("Enter Product id: ");
+					id = scanner.nextInt();
+					if (productService.getProduct(id) != null) {
+						System.out.println("Product does not exist: ");
+					} else {
+						Product obj1 = new Product();
+						obj1 = productService.getProduct(id);
+						System.out.println(" " + obj1.toString());
+					}
+					break;
+				case 5:
+					List<Product> list = productService.getAllProduct();
+					Product obj2 = new Product();
+					if (productService.getAllProduct() != null) {
+						for (int i = 0; i < list.size(); i++) {
+							obj2 = list.get(i);
+							System.out.println(obj2.toString());
+						}
+					} else
+						System.out.println("No Product in the list, add some Products first");
+					break;
+				case 6:
+					status = false;
+				default:
+					System.out.println("Exiting Admin section....");
+
+				}
+
+			}
+		}
+
+	}
+
+	private Product readProductInfo() {
+
+		Scanner scanner = InputUtil.getScanner();
+		System.out.println("Enter Product id, name, price, qty: ");
+		int id = scanner.nextInt();
+		String name = scanner.next();
+		int price = scanner.nextInt();
+		int quantity = scanner.nextInt();
+		return new Product(id, name, price, quantity);
+	}
+
+}

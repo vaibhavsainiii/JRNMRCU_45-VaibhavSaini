@@ -1,0 +1,96 @@
+package com.EKart.dao;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.EKart.model.Product;
+
+
+public class ProductDaoImpl implements ProductDao {
+
+	private static Map<Long, Product> products;
+	private static long origin = 1200L;
+
+	static {
+
+		products = new HashMap<Long, Product>();
+
+	}
+
+	@Override
+	public boolean add(Product product) {
+
+		int initialSize = products.size();
+
+		products.put(origin++, product);
+
+		if (products.size() > initialSize)
+			return true;
+		else
+			return false;
+
+	}
+
+	@Override
+	public boolean update(Product product,int productId) {
+		for(Map.Entry<Long, Product> entry: products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				products.replace(entry.getKey(), product);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean delete(int productId) {
+		for(Map.Entry<Long, Product> entry:products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				products.remove(entry.getKey());
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Product getProduct(int productId) {
+		for(Map.Entry<Long, Product> entry:products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				return obj;
+			}
+		}
+		return new Product();
+	}
+
+	@Override
+	public List<Product> getAllProduct() {
+		ArrayList<Product> list=new ArrayList<Product>();
+		for(Map.Entry<Long, Product> entry:products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			list.add(obj);
+			System.out.println("list");
+				return list;
+			
+		}	
+		return null;
+		}
+
+}

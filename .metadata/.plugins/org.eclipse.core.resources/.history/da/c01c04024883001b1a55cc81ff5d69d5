@@ -1,0 +1,48 @@
+package com.Eekart.dao;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.EKart.model.Customer;
+import com.EKart.model.Product;
+import com.EKart.service.AdminOperationsProductImpl;
+import com.ekart.dao.CartDaoImpl;
+
+public class CustomerDaoImpl {
+	CartDao cartDaoImpl=new CartDaoImpl();
+	private static HashMap<Integer,Customer> customerCart;
+	private static int cartAddress = 1;
+
+	static {
+		customerCart=new HashMap<Integer,Customer>();
+	}
+	
+
+	public boolean register(Customer customer)
+	{
+		
+		int initialSize = customerCart.size();
+
+		customerCart.put(cartAddress,customer);
+
+		if (customerCart.size() > initialSize)
+			return true;
+		else
+			return false;
+	}
+	
+	public void explore(){
+		AdminOperationsProductImpl obj=new AdminOperationsProductImpl();
+		obj.getAllProduct();
+	}
+//	public boolean add(int cartKey,int productId)
+//	{
+////		cartDaoImpl.addItem(customerKey,productId);
+//	}
+//
+//	public List<Product> viewCart(int cartKey)
+//	{
+////		return cartDaoImpl.toString();
+//	}
+}

@@ -1,0 +1,47 @@
+package com.fkart.service;
+
+import java.util.List;
+
+import com.fkart.dao.CartDaoImpl;
+import com.fkart.dao.CustomerDaoImpl;
+import com.fkart.dao.ProductDaoImpl;
+import com.fkart.model.Cart;
+import com.fkart.model.Customer;
+import com.fkart.model.Product;
+
+public class CustomerOperationsImpl implements ICustomerOperations {
+
+	CustomerDaoImpl customerDao=new CustomerDaoImpl();
+	CartDaoImpl cartDao=new CartDaoImpl();
+	ProductDaoImpl productDao=new ProductDaoImpl();
+	
+
+	
+	@Override
+	public boolean register(Customer customer) {
+		return customerDao.register(customer);
+	}
+
+	@Override
+	public List<Product> view() {
+		List<Product> nonExpiredProducts; 
+		nonExpiredProducts=productDao.getAllProduct();
+		//some logic to filter out date from system date
+		return nonExpiredProducts;
+		
+	}
+
+	@Override
+	public boolean add(int productId,int customerId) {
+		
+		Product prod=productDao.getProduct(productId);
+		return cartDao.add(prod,customerId);
+	}
+
+	@Override
+	public List<Product> viewCart(int cartId) {
+		
+		return cartDao.viewCart(cartId);
+	}
+
+}

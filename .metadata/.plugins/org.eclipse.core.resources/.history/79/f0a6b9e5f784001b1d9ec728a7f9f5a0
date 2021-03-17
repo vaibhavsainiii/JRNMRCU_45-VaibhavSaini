@@ -1,0 +1,89 @@
+package io;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.io.IOException;
+class Player
+{
+	String name,teamName;
+	int noOfMatches;
+	public Player(int noOfMatches,String name,String teamName) {
+		// TODO Auto-generated constructor stub
+		this.noOfMatches=noOfMatches;
+		this.name=name;
+		this.teamName=teamName;
+	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public int getNoOfMatches() {
+		return noOfMatches;
+	}
+	public void setNoOfMatches(int noOfMatches) {
+		this.noOfMatches = noOfMatches;
+	}
+	
+	void readFile() throws IOException
+	{
+		FileReader fr=new FileReader("test.txt");
+		int i; 
+	    while ((i=fr.read()) != -1) 
+	      System.out.print((char) i); 
+	}
+	void storeInFile() throws IOException
+	{
+		try {
+		      File myObj = new File("test.csv");
+		      if (myObj.createNewFile()) {
+		        System.out.println("File created: " + myObj.getName());
+		      } else {
+		        System.out.println("File already exists.");
+		      }
+		    } catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		FileWriter fr=new FileWriter("test.csv");
+		fr.append("Name");
+		fr.append(",");
+		fr.append("Team name");
+		fr.append(",");
+		fr.append("No of matches");
+		fr.append("\n");
+		fr.append(name+","+teamName+","+noOfMatches+"\n");
+		fr.flush();
+		fr.close();
+		
+	}
+}
+public class Test {
+
+	public static void main(String[] args)throws Exception {
+		  
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the name");
+		String name=sc.next();
+		System.out.println("Enter the Team Name");
+		String teamName=sc.next();
+		System.out.println("Enter the no of matches");
+		int noOfMatches=sc.nextInt();
+		Player p1=new Player(noOfMatches, name, teamName);
+		p1.readFile();
+		p1.storeInFile();
+		
+		
+	}
+}

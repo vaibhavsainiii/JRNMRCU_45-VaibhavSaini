@@ -1,0 +1,103 @@
+package com.fkart.dao;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.fkart.model.Product;
+import com.fkart.util.InputUtil;
+
+
+public class ProductDaoImpl implements ProductDao {
+
+	private static Map<Long, Product> products;
+	private static long origin = 1200L;
+
+	static {
+
+		products = new HashMap<Long, Product>();
+
+	}
+
+	@Override
+	public boolean add(Product product) {
+
+		int initialSize = products.size();
+
+		products.put(origin++, product);
+
+		if (products.size() > initialSize)
+			return true;
+		else
+			return false;
+
+	}
+
+	@Override
+	public boolean update(int productId) {
+		for(Map.Entry<Long, Product> entry: products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				Scanner scanner = InputUtil.getScanner();
+				System.out.println("Enter Product id, name, price, qty: ");
+				int id = scanner.nextInt();
+				String name = scanner.next();
+				int price = scanner.nextInt();
+				int quantity = scanner.nextInt();
+				Product prod=new Product(id, name, price, quantity);
+				products.replace(entry.getKey(), prod);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean delete(int productId) {
+		for(Map.Entry<Long, Product> entry:products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				products.remove(entry.getKey());
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Product getProduct(int productId) {
+		for(Map.Entry<Long, Product> entry:products.entrySet())
+		{
+			Product obj=new Product();
+			obj=entry.getValue();
+			if(obj.getId()==productId)
+			{
+				return obj;
+			}
+		}
+		return new Product();
+	}
+
+	@Override
+	public List<Product> getAllProduct() {
+		ArrayList<Product> list=new ArrayList<Product>();
+		Collection<Product> productlist=products.values();
+		for(Product p:productlist)
+		{
+			list.add(p);
+			
+		}	
+		return list;
+		}
+
+}

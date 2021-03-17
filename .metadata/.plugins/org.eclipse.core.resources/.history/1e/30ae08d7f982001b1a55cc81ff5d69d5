@@ -1,0 +1,6 @@
+package com.EKart.service;
+
+public interface AdminOperationProduct {
+
+	
+}

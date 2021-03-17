@@ -1,0 +1,27 @@
+package io;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
+public class Test {
+
+	public static void main(String args[])
+	{
+		
+		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+	       Date dateobj = new Date();
+	      String date=df.format(dateobj);
+	      try {
+			dateobj=df.parse(date);
+			System.out.println(dateobj);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		}
+	
+}

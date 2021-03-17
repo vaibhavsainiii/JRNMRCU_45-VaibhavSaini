@@ -1,0 +1,5 @@
+package com.fkart.dao;
+
+public interface CartDao {
+
+}

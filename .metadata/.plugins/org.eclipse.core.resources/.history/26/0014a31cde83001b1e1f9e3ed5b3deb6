@@ -1,0 +1,15 @@
+package com.fkart.dao;
+
+import java.util.List;
+
+import com.fkart.model.Customer;
+import com.fkart.model.Product;
+
+public interface ICustomerDao {
+
+	public boolean register(Customer customer);
+	public List<Product> explore();
+	public boolean add(int productId);
+
+	public List<Product> viewCart();
+}

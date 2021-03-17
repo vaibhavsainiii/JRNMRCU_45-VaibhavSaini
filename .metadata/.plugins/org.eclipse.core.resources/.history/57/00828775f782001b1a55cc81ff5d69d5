@@ -1,0 +1,5 @@
+package com.EKart.model;
+
+public class Admin {
+
+}

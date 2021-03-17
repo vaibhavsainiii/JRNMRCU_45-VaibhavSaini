@@ -1,0 +1,18 @@
+package com.EKart.service;
+
+import java.util.List;
+
+import com.ekart.model.*;
+
+public interface AdminOperationsProduct {
+
+	boolean add(Product product);
+
+	boolean update(int productId);
+
+	boolean delete(int productId);
+
+	Product getProduct(int productId);
+
+	List<Product> getAllProduct();
+}

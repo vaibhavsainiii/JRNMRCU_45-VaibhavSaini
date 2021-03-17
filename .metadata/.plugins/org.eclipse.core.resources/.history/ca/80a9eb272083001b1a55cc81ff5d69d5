@@ -1,0 +1,44 @@
+package com.EKart.controller;
+
+import java.util.Scanner;
+
+import com.EKart.controller.AdminController;
+import com.EKart.controller.CustomerController;
+import com.EKart.util.InputUtil;
+
+public class MainController {
+	public static void main(String[] args) {
+
+		runApplication();
+
+	}
+
+	private static void runApplication() {
+
+		Scanner scanner = InputUtil.getScanner();
+		System.out.println("Welcome to EKart");
+		System.out.println("1.Customer \n2.Admin \n3.Exit");
+
+		System.out.println("Enter your choice:");
+		int choice = scanner.nextInt();
+
+		switch (choice) {
+
+		case 1:
+			CustomerController customerController = new CustomerController();
+//			customerController.operations();
+			break;
+
+		case 2:
+			AdminController adminController = new AdminController();
+			adminController.operations();
+			break;
+
+		case 3:
+			System.out.println("Exiting..!");
+			System.exit(1);
+
+		}
+
+	}
+}

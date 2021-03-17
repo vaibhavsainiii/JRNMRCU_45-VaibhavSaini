@@ -1,0 +1,16 @@
+package com.EKart.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.EKart.model.*;
+
+public interface CartDao {
+
+	static HashMap<Integer,List<Product>> cart;
+	
+	static {
+		cart=new HashMap<Integer,List<Product>>();
+	}
+
+}

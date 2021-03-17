@@ -1,0 +1,51 @@
+package com.fkart.testing;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import com.fkart.controller.MainController;
+import com.fkart.dao.CartDaoImpl;
+import com.fkart.model.Product;
+import com.fkart.service.CustomerOperationsImpl;
+
+class ControllerTest {
+
+	CustomerOperationsImpl obj=new CustomerOperationsImpl();
+
+	@Test
+	void addTest(){
+		assertEquals(obj.add(1001, 1001),true);
+	}
+	
+	@Test
+	void addTest1(){
+		assertEquals(obj.add(456, 1001),true);
+	}
+	
+	@Test
+	void addTest2(){
+		Product e=new Product();
+		e.setId(0);
+		List<Product> list=new ArrayList<Product>();
+		list.add(e);
+		assertEquals(obj.viewCart(1001),list);
+		List<Product> listEmpty=new ArrayList<Product>();
+		assertEquals(obj.viewCart(2002),listEmpty);
+	}
+	
+	@Test
+	void addTest3(){
+		List<Product> list=new ArrayList<Product>();
+		assertEquals(obj.viewCart(2002),list);
+	}
+	
+//	public List<Product> view()
+	
+	
+	
+}

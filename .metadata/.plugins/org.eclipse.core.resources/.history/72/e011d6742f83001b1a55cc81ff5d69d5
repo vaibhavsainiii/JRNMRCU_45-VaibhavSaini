@@ -1,0 +1,5 @@
+package com.EKart.dao;
+
+public interface CustomerDao {
+
+}

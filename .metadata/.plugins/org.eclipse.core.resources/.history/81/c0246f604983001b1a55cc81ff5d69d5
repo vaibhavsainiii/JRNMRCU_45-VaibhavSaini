@@ -1,0 +1,5 @@
+package com.Eekart.dao;
+
+public interface CartDao {
+
+}

@@ -1,0 +1,9 @@
+package com.fkart.dao;
+
+import com.fkart.model.Product;
+
+public interface ICartDao {
+	
+	public boolean add(Product prod, int customerId)
+
+}

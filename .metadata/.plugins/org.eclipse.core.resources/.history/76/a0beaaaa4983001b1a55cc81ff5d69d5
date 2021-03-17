@@ -1,0 +1,15 @@
+package com.ekart.dao;
+
+import java.util.List;
+
+import com.ekart.model.Customer;
+import com.ekart.model.Product;
+
+public interface CustomerDao {
+
+	public boolean register(Customer customer);
+	public List<Product> explore();
+	public boolean add(int productId);
+
+	public List<Product> viewCart();
+}

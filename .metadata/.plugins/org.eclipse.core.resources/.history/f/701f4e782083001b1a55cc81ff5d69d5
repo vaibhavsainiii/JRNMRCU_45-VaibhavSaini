@@ -1,0 +1,30 @@
+package com.EKart.model;
+
+public class Admin {
+
+	private static String userName;
+	private static String password;
+	
+	static {
+		userName="admin";
+		password="admin";
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+
+	
+	
+}

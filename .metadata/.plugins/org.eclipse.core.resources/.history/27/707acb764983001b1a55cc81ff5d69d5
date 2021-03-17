@@ -1,0 +1,18 @@
+package com.fkart.dao;
+
+import java.util.List;
+
+import com.ekart.model.Product;
+
+public interface ProductDao {
+
+	public boolean add(Product product);
+
+	public boolean update(int productId);
+
+	public boolean delete(int productId);
+
+	public Product getProduct(int productId);
+
+	public List<Product> getAllProduct();
+}

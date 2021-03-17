@@ -1,0 +1,54 @@
+package com.EKart.controller;
+
+import java.util.Scanner;
+
+import com.EKart.controller.AdminController;
+import com.EKart.controller.CustomerController;
+import com.EKart.model.Admin;
+import com.EKart.util.InputUtil;
+
+public class MainController extends Admin{
+	public static void main(String[] args) {
+
+		runApplication();
+
+	}
+
+	private static void runApplication() {
+
+		Scanner scanner = InputUtil.getScanner();
+		Admin admin=new Admin();
+		System.out.println("Welcome to EKart");
+		System.out.println("1.Customer \n2.Admin \n3.Exit");
+
+		System.out.println("Enter your choice:");
+		int choice = scanner.nextInt();
+
+		switch (choice) {
+
+		case 1:
+			
+			CustomerController customerController = new CustomerController();
+//			customerController.operations();
+			break;
+
+		case 2:
+			System.out.println("Please enter the ID and Password: ");
+			 String id=scanner.next();
+			 String pass=scanner.next();
+			if(id==admin.getUserName() && pass==admin.getPassword())
+			{
+				System.out.println("ID and password matched....");
+
+				AdminController adminController = new AdminController();
+			adminController.operations();}
+			break;
+
+		case 3:
+			System.out.println("Exiting..!");
+			System.exit(1);
+
+		}
+
+	}
+}

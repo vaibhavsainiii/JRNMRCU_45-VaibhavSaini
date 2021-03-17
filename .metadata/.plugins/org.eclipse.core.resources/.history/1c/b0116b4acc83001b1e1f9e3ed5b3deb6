@@ -1,0 +1,6 @@
+package com.fkart.service;
+
+public interface CustomerOperations {
+
+	
+}

@@ -1,0 +1,39 @@
+package com.fkart.service;
+
+import java.util.List;
+
+import com.fkart.dao.IProductDao;
+import com.fkart.dao.ProductDaoImpl;
+import com.fkart.model.Product;
+
+public class AdminOperationsProductImpl implements AdminOperationsProduct{
+
+	private static IProductDao ProductDao = new ProductDaoImpl();
+
+	@Override
+	public boolean add(Product product) {
+		return ProductDao.add(product);
+	}
+
+	@Override
+	public boolean update(int id) {
+
+		return ProductDao.update(id);
+	}
+
+	@Override
+	public boolean delete(int productId) {
+		return ProductDao.delete(productId);
+	}
+
+	@Override
+	public Product getProduct(int productId) {
+		return ProductDao.getProduct(productId);
+	}
+
+	@Override
+	public List<Product> getAllProduct() {
+		return ProductDao.getAllProduct();
+	}
+
+}

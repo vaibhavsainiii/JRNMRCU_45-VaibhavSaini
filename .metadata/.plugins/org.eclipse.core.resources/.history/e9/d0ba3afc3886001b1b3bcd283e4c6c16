@@ -1,0 +1,8 @@
+package com.fkart.exception;
+
+public class WrongUserNamePassException extends Exception{
+	WrongUserNamePassException(String s)
+	{
+		super(s);
+	}
+}

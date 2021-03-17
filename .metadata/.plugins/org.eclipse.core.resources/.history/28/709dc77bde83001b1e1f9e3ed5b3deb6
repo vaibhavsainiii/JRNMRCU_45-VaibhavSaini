@@ -1,0 +1,13 @@
+package com.fkart.controller;
+
+import com.fkart.service.ICustomerOperationsProduct;
+import com.fkart.service.CustomerOperationsProductImpl;
+
+public class CustomerController {
+	private static ICustomerOperationsProduct customerService = new CustomerOperationsProductImpl();
+
+	public void operations() {
+		
+	}
+
+}

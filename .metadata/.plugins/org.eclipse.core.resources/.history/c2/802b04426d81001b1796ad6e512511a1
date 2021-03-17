@@ -1,0 +1,31 @@
+package io;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Scanner;
+
+public class EMI {
+	 
+    public static void main(String args[])throws Exception{
+   
+        Calendar cal = Calendar.getInstance();     
+        System.out.println("current date: " + getDate(cal));
+    
+        cal.add(Calendar.MONTH, -20);
+        System.out.println("date before 5 months : " + getDate(cal));
+     
+        
+    }
+ 
+    public static Date getDate(Calendar cal)throws Exception{
+    	System.out.println("Enter a date in yyyy-MM-dd format");
+    	Scanner scanner=new Scanner(System.in);
+    	String date=scanner.next();
+    	Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        return date1;
+    }
+ 
+    
+ 
+}
+

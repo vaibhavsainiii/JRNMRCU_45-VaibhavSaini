@@ -1,0 +1,18 @@
+package com.EKart.dao;
+
+import java.util.List;
+
+import com.EKart.model.Product;
+
+public interface ProductDao {
+
+	boolean add(Product product);
+
+	boolean update(Product product,int productId);
+
+	boolean delete(int productId);
+
+	Product getProduct(int productId);
+
+	List<Product> getAllProduct();
+}

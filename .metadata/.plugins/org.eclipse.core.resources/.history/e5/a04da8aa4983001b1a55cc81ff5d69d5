@@ -1,0 +1,27 @@
+package com.ekart.dao;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+
+import com.ekart.model.Product;
+
+public class CartDaoImpl implements CartDao {
+	static HashMap<Integer, ArrayList<Product>> cart;
+
+	static {
+		cart = new HashMap<Integer, ArrayList<Product>>();
+	}
+	
+////	public String toString(int id)
+//	{
+//		ArrayList<Product> list=new ArrayList<Product>();
+//		Product product=new Product();
+//		list=cart.get(id);
+//		
+////		return list.toString;
+//		} 
+//	
+
+}

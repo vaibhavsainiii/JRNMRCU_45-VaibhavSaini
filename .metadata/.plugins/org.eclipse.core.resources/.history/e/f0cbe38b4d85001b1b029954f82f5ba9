@@ -1,0 +1,94 @@
+package com.fkart.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+import com.fkart.controller.AdminController;
+import com.fkart.controller.CustomerController;
+import com.fkart.dao.CustomerDaoImpl;
+import com.fkart.model.Admin;
+import com.fkart.model.Customer;
+import com.fkart.model.Product;
+import com.fkart.service.AdminOperationsProductImpl;
+import com.fkart.service.IAdminOperationsProduct;
+import com.fkart.util.InputUtil;
+
+public class MainController{
+	private static IAdminOperationsProduct productService = new AdminOperationsProductImpl();
+	private static CustomerDaoImpl customer=new CustomerDaoImpl();
+	public static void main(String[] args) {
+
+		putSomeValues();
+		runApplication();
+
+	}
+	
+	private static void putSomeValues() {
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+		try {
+			Date date1=dateFormat.parse("01-01-2020");
+			Date date2=dateFormat.parse("01-12-2021");
+			Date date3=dateFormat.parse("20-12-2020");
+			Date date4=dateFormat.parse("01-01-2021");
+			Date date5=dateFormat.parse("01-12-2019");
+			Date date6=dateFormat.parse("01-12-2020");
+			Date date7=dateFormat.parse("01-01-2021");
+			Date date8=dateFormat.parse("01-12-2022");
+			Product product1 = new Product(1001, "Toffee", 1, 1000,date1,date2);
+			productService.add(product1);
+			Product product2 = new Product(2002, "Juice", 50, 50,date3,date4);
+			productService.add(product2);
+			Product product3 = new Product(3003, "DishWash", 20, 200,date5,date6);
+			productService.add(product3);
+			Product product4 = new Product(4004, "Bulb", 45, 250,date7,date8);
+			productService.add(product4);
+
+		} catch (Exception dateException) {
+			System.out.println(dateException);
+		}
+		finally {
+			Customer c1=new Customer(1001,"Vaibhav Saini","vaibhav.mahar@gmail.com",7011658967L,"C1/91, vijay enclave");
+			Customer c2=new Customer(2002,"Rahul Singh","rahulSingh@gmail.com",7015324632L,"R2-23, raja puri");
+			customer.register(c2);
+			customer.register(c1);
+
+
+		}
+		
+		
+	}
+
+
+	private static void runApplication() {
+
+		Scanner scanner = InputUtil.getScanner();
+		CustomerController customerController = new CustomerController();
+		AdminController adminController = new AdminController();
+		while(true)
+		{System.out.println("-------Welcome to FKart-------");
+		System.out.println("1.Customer \n2.Admin \n3.Exit");
+
+		System.out.println("Enter your choice:");
+		int choice = scanner.nextInt();
+
+		switch (choice) {
+
+		case 1:
+			customerController.operations();
+			break;
+
+		case 2:	
+			adminController.operations();
+			break;
+
+		case 3:
+			System.out.println("Exiting..!");
+			System.exit(0);
+
+		}
+		}
+	}
+}

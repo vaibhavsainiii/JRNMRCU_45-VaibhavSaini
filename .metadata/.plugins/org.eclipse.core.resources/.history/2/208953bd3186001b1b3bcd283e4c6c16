@@ -1,0 +1,65 @@
+package com.fkart.testing;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.fkart.controller.MainController;
+import com.fkart.dao.CartDaoImpl;
+import com.fkart.model.Product;
+import com.fkart.service.CustomerOperationsImpl;
+
+class ServiceTest {
+
+	private CustomerOperationsImpl obj;
+	private List<Product> list;
+	private Product e=new Product();
+
+	@BeforeEach
+	void setUp() throws Exception {
+		obj = new CustomerOperationsImpl();
+		list = new ArrayList<Product>();
+		e=new Product();
+
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		obj = null;
+
+	}
+
+	@Test
+	void addTest() {
+		assertEquals(obj.add(1001, 1001), true);
+	}
+
+	@Test
+	void viewCartTest() {
+		e.setId(0);
+		list.add(e);
+		System.out.println(list+"\n"+obj.viewCart(1001));
+		assertEquals(obj.viewCart(1001), list);
+		assertNotEquals(obj.viewCart(2002), list);
+
+		
+	}
+
+	@Test
+	void viewTest() {
+	
+		assertEquals(obj.view(), list);
+		list.add(e);
+//		List<Product> listEmpty = new ArrayList<Product>();
+		assertNotEquals(obj.view(), listEmpty);
+	}
+
+//	public List<Product> view()
+
+}

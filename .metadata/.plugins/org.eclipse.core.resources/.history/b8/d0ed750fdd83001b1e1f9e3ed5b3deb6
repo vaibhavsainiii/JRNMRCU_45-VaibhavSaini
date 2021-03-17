@@ -1,0 +1,48 @@
+package com.fkart.dao;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+
+import com.fkart.model.Product;
+
+public class CartDaoImpl implements ICartDao {
+	static HashMap<Integer, ArrayList<Product>> cart;
+	static ArrayList<Product> product1=new ArrayList<Product>();
+	
+	static {
+		cart = new HashMap<Integer, ArrayList<Product>>();
+		product1.add(null)
+		cart.put(1001, ArrayList<>)
+	}
+
+	public List<Product> allProduct() {
+
+		return null;
+	}
+
+	public boolean add(Product prod, int customerId) {
+		ArrayList<Product> arr1 = new ArrayList<Product>();
+		if (cart.containsKey((Object) customerId)) {
+			(cart.get(customerId)).add(prod);
+			return true;
+		} else {
+			arr1.add(prod);
+			cart.put(customerId, arr1);
+			return true;
+		}
+
+	}
+
+////	public String toString(int id)
+//	{
+//		ArrayList<Product> list=new ArrayList<Product>();
+//		Product product=new Product();
+//		list=cart.get(id);
+//		
+////		return list.toString;
+//		} 
+//	
+
+}

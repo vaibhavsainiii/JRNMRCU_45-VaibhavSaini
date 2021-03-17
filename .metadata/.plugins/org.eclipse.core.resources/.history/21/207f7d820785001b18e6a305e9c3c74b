@@ -1,0 +1,46 @@
+package com.fkart.controller;
+
+import java.util.Scanner;
+
+import com.fkart.controller.AdminController;
+import com.fkart.controller.CustomerController;
+import com.fkart.model.Admin;
+import com.fkart.util.InputUtil;
+
+public class MainController{
+	public static void main(String[] args) {
+
+		runApplication();
+
+	}
+
+	private static void runApplication() {
+
+		Scanner scanner = InputUtil.getScanner();
+		CustomerController customerController = new CustomerController();
+		AdminController adminController = new AdminController();
+		while(true)
+		{System.out.println("-------Welcome to FKart-------");
+		System.out.println("1.Customer \n2.Admin \n3.Exit");
+
+		System.out.println("Enter your choice:");
+		int choice = scanner.nextInt();
+
+		switch (choice) {
+
+		case 1:
+			customerController.operations();
+			break;
+
+		case 2:	
+			adminController.operations();
+			break;
+
+		case 3:
+			System.out.println("Exiting..!");
+			System.exit(0);
+
+		}
+		}
+	}
+}
