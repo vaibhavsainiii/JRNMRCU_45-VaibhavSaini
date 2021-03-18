@@ -1,5 +1,5 @@
 package com.fkart.controller;
-
+import com.fkart.exception.*;
 import com.fkart.service.ICustomerServices;
 import com.fkart.util.InputUtil;
 
@@ -78,7 +78,16 @@ public class CustomerController {
 					c = scanner.nextInt();
 				}
 				if (customerService.viewCart(c).size() == 0) {
-					System.out.println("Cart is empty: ");
+					try {
+						throw new cartEmptyException();
+					}
+					catch(cartEmptyException e) {
+						System.out.println(e);
+
+					}
+					
+//					System.out.println("Cart is empty: ");
+					
 				} else {
 					List<Product> cartList = new ArrayList<Product>();
 					cartList = customerService.viewCart(c);
