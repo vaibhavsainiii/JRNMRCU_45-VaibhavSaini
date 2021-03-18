@@ -1,5 +1,3 @@
-
-
 package com.fkart.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
